@@ -3,7 +3,7 @@ declare module "react-native-google-fit" {
     export interface GoogleFit {
         eventListeners: any [];
 
-        authorize(): void;
+        authorize(): Promise<any> | void;
 
         disconnect(): void;
 
@@ -26,7 +26,7 @@ declare module "react-native-google-fit" {
          * @param {Object} options getDailyStepCountSamples accepts an options object containing required startDate: ISO8601Timestamp and endDate: ISO8601Timestamp.
          * @param {Function} callback The function will be called with an array of elements.
          */
-        getDailyStepCountSamples: (options: any, callback: ((isError: boolean, result: any) => void)) => void;
+        getDailyStepCountSamples: (options: any, callback?: ((isError: boolean, result: any) => void)) => Promise<any> | void;
 
         buildDailySteps(steps: any): { date: any, value: any }[];
 
@@ -68,6 +68,10 @@ declare module "react-native-google-fit" {
          * @callback callback The function will be called with an array of elements.
          */
         getHeightSamples: (options: any, callback: ((isError: boolean, result: WeightSample[]) => void)) => void;
+
+        getHeartRateSamples: (options: any, callback: ((isError: boolean, result: any) => void)) => void;
+
+        getBloodPressureSamples: (options: any, callback: ((isError: boolean, result: any) => void)) => void;
 
         saveWeight: (options: any, callback: ((isError: boolean, result: any) => void)) => void;
 
